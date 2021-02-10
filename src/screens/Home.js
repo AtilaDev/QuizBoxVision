@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+
 import LogoBox from '../components/LogoBox';
+import StartButton from '../components/StartButton';
 
 function Home() {
   return (
@@ -10,7 +12,9 @@ function Home() {
         <View style={styles.logoSection}>
           <LogoBox />
         </View>
-        <View style={styles.startButton}></View>
+        <View style={styles.startButton}>
+          <StartButton />
+        </View>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -24,7 +28,9 @@ const styles = StyleSheet.create({
   logoSection: {
     paddingTop: 130,
   },
-  startButton: {},
+  startButton: {
+    paddingTop: 120,
+  },
 });
 
 export default Home;

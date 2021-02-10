@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import ResponsiveImage from 'react-native-responsive-image';
-import { AppLoading } from 'expo-app-loading';
 import {
   useFonts,
   Ubuntu_700Bold,
@@ -14,32 +13,38 @@ function LogoBox() {
     Ubuntu_400Regular,
   });
 
-  if (!fontsLoaded) return <AppLoading />;
+  if (!fontsLoaded) return <View />;
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={styles.container}>
       <ResponsiveImage
-        resizeMode="cover"
         source={require('../../assets/bbvLogo.png')}
-        initWidth={87}
-        initHeight={100}
+        initWidth="87"
+        initHeight="100"
       />
-      <View style={{ marginLeft: 10, justifyContent: 'center' }}>
-        <Text style={{ fontFamily: 'Ubuntu_700Bold', fontSize: 30 }}>
-          BlackBox Vision
-        </Text>
-        <Text style={{ fontFamily: 'Ubuntu_400Regular', fontSize: 20 }}>
-          QuizBox Vision
-        </Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.textBlackBox}>BlackBox Vision</Text>
+        <Text style={styles.textQuizBox}>QuizBox Vision</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  image: {
-    height: 331,
-    width: 289,
+  container: {
+    flexDirection: 'row',
+  },
+  textContainer: {
+    marginLeft: 10,
+    justifyContent: 'center',
+  },
+  textBlackBox: {
+    fontFamily: 'Ubuntu_700Bold',
+    fontSize: 30,
+  },
+  textQuizBox: {
+    fontFamily: 'Ubuntu_400Regular',
+    fontSize: 20,
   },
 });
 
