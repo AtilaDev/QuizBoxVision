@@ -1014,6 +1014,11 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@expo-google-fonts/allan@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/allan/-/allan-0.1.0.tgz#32758e15103ec7c74d522783fbc536886ae8c6b2"
+  integrity sha512-XKnI6A+bZJGP6xP4oY5VnULH4DfnTo0PNcL4+AGWds86W9jZxG031qeZ4fLSDRtpIVdeB8bxUcKkxP7gjcYEow==
+
 "@expo-google-fonts/play@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/play/-/play-0.1.0.tgz#a80fb4fd8c8d42617a8e455c8e54c8ece64fc042"

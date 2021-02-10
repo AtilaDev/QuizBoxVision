@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/allan": "^0.1.0",
     "@expo-google-fonts/play": "^0.1.0",
     "@expo-google-fonts/ubuntu": "^0.1.0",
     "@react-native-community/masked-view": "0.1.10",

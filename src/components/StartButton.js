@@ -1,6 +1,5 @@
-// import Animatable from 'react-native-animatable';
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useFonts, Play_700Bold } from '@expo-google-fonts/play';
 
 function StartButton() {
@@ -11,9 +10,9 @@ function StartButton() {
   if (!fontsLoaded) return <View />;
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <Text style={styles.textStart}>Start</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
