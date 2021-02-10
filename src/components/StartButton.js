@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useFonts, Play_700Bold } from '@expo-google-fonts/play';
 
-function StartButton() {
+function StartButton({ play }) {
   let [fontsLoaded] = useFonts({
     Play_700Bold,
   });
@@ -10,7 +10,7 @@ function StartButton() {
   if (!fontsLoaded) return <View />;
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={play}>
       <Text style={styles.textStart}>Start</Text>
     </TouchableOpacity>
   );

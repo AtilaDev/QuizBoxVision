@@ -4,17 +4,26 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 
 import Home from './src/screens/Home';
+import Game from './src/screens/Game';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator mode="modal" initialRouteName="Game">
         <Stack.Screen
           name="Home"
           component={Home}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Game"
+          component={Game}
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+          }}
         />
       </Stack.Navigator>
       <StatusBar style="auto" />

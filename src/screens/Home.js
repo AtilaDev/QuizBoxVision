@@ -1,34 +1,32 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
+import Background from '../components/Background';
 import LogoBox from '../components/LogoBox';
 import StartButton from '../components/StartButton';
 import FavreLeandro from '../components/FavreLeandro';
 
-function Home() {
+function Home({ navigation }) {
   return (
-    <LinearGradient colors={['#BEFCE1', '#5DD1B9']} style={styles.container}>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.logoSection}>
-          <Animatable.View animation="fadeInDown">
-            <LogoBox />
-          </Animatable.View>
-        </View>
-        <View style={styles.startButton}>
-          <Animatable.View animation="zoomIn">
-            <StartButton />
-          </Animatable.View>
-        </View>
+    <Background style={styles.container}>
+      <View style={styles.logoSection}>
+        <Animatable.View animation="fadeInDown">
+          <LogoBox />
+        </Animatable.View>
+      </View>
+      <View style={styles.startButton}>
+        <Animatable.View animation="zoomIn">
+          <StartButton play={() => navigation.navigate('Game')} />
+        </Animatable.View>
+      </View>
 
-        <View style={styles.devBy}>
-          <Animatable.View animation="fadeInUp">
-            <FavreLeandro />
-          </Animatable.View>
-        </View>
-      </SafeAreaView>
-    </LinearGradient>
+      <View style={styles.devBy}>
+        <Animatable.View animation="fadeInUp">
+          <FavreLeandro />
+        </Animatable.View>
+      </View>
+    </Background>
   );
 }
 
