@@ -1,16 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   useFonts,
   Ubuntu_400Regular_Italic,
   Ubuntu_700Bold,
+  Ubuntu_500Medium,
 } from '@expo-google-fonts/ubuntu';
 import { convertChars } from '../utils';
 
@@ -26,12 +21,16 @@ function Card() {
   let [fontsLoaded] = useFonts({
     Ubuntu_400Regular_Italic,
     Ubuntu_700Bold,
+    Ubuntu_500Medium,
   });
 
   if (!fontsLoaded) return <View />;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
+      <View style={styles.badgeCounter}>
+        <Text style={styles.badgeText}>1 / 10</Text>
+      </View>
       <LinearGradient colors={['#fff', '#ddd']} style={styles.cardGradient}>
         <LinearGradient
           colors={['#311B92', '#673AB7']}
@@ -58,6 +57,11 @@ function Card() {
 
 const styles = StyleSheet.create({
   container: {
+    width: width * 0.8,
+    height: height * 0.6,
+    borderRadius: 15,
+    alignItems: 'center',
+
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
   },
   questionBox: {
     width: width * 0.76,
-    height: height * 0.25,
+    height: height * 0.2,
     borderRadius: 15,
     marginTop: 8,
   },
@@ -101,6 +105,29 @@ const styles = StyleSheet.create({
     color: '#673AB7',
     fontFamily: 'Ubuntu_400Regular_Italic',
     fontSize: 18,
+  },
+  badgeCounter: {
+    position: 'absolute',
+    zIndex: 1000,
+    backgroundColor: '#fff',
+    marginTop: -15,
+    paddingVertical: 8,
+    paddingHorizontal: 25,
+    borderRadius: 30,
+
+    shadowColor: '#ddd',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
+  },
+  badgeText: {
+    fontSize: 15,
+    fontFamily: 'Ubuntu_500Medium',
   },
 });
 

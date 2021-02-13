@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 function Background(props) {
   return (
     <LinearGradient colors={['#BEFCE1', '#5DD1B9']} {...props}>
-      <SafeAreaView>{props.children}</SafeAreaView>
+      <SafeAreaView {...props}>{props.children}</SafeAreaView>
     </LinearGradient>
   );
 }

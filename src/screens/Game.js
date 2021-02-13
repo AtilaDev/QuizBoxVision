@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 import Background from '../components/Background';
 import Card from '../components/Card';
@@ -8,7 +9,9 @@ function Game() {
   return (
     <Background style={styles.container}>
       <View style={styles.cardContainer}>
-        <Card />
+        <Animatable.View animation="bounceInRight">
+          <Card />
+        </Animatable.View>
       </View>
     </Background>
   );
@@ -20,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardContainer: {
-    paddingTop: 100,
+    marginTop: 130,
   },
 });
 
