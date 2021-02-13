@@ -27,7 +27,7 @@ function Card() {
   if (!fontsLoaded) return <View />;
 
   return (
-    <View style={[styles.container]}>
+    <View style={styles.container}>
       <View style={styles.badgeCounter}>
         <Text style={styles.badgeText}>1 / 10</Text>
       </View>
@@ -57,9 +57,6 @@ function Card() {
 
 const styles = StyleSheet.create({
   container: {
-    width: width * 0.8,
-    height: height * 0.6,
-    borderRadius: 15,
     alignItems: 'center',
 
     shadowColor: '#000',
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
   },
   cardGradient: {
     width: width * 0.8,
-    height: height * 0.6,
+    // height: height * 0.6,
     borderRadius: 15,
     alignItems: 'center',
   },

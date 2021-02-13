@@ -5,13 +5,14 @@ import { StatusBar } from 'expo-status-bar';
 
 import Home from './src/screens/Home';
 import Game from './src/screens/Game';
+import Result from './src/screens/Result';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator mode="modal" initialRouteName="Game">
+      <Stack.Navigator mode="card" initialRouteName="Game">
         <Stack.Screen
           name="Home"
           component={Home}
@@ -20,6 +21,14 @@ function App() {
         <Stack.Screen
           name="Game"
           component={Game}
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="Result"
+          component={Result}
           options={{
             headerShown: false,
             gestureEnabled: false,
