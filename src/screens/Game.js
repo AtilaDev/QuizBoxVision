@@ -1,19 +1,23 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../components/Background';
 import Card from '../components/Card';
+import HeaderGame from '../components/HeaderGame';
 
 function Game() {
   return (
-    <Background style={styles.container}>
-      <View style={styles.cardContainer}>
-        <Animatable.View animation="bounceInRight">
-          <Card />
-        </Animatable.View>
-      </View>
-    </Background>
+    <>
+      <Background style={styles.container}>
+        <HeaderGame />
+        <View style={styles.cardContainer}>
+          <Animatable.View animation="bounceInRight">
+            <Card />
+          </Animatable.View>
+        </View>
+      </Background>
+    </>
   );
 }
 
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardContainer: {
-    marginTop: 130,
+    marginTop: 50,
   },
 });
 
