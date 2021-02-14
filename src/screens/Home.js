@@ -12,7 +12,7 @@ import { useApi } from '../api';
 function Home({ navigation }) {
   const startGame = async () => {
     const data = await useApi();
-    navigation.navigate('Game', { data });
+    navigation.navigate('Game', { questions: data.results });
   };
 
   return (

@@ -10,10 +10,11 @@ import {
 import { convertChars } from '../utils';
 
 import AnswerButton from './AnswerButton';
+import QuestionPanel from './QuestionPanel';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-function Card() {
+function Card({ results }) {
   const [question, setQuestion] = React.useState(
     'What is the name of Cream the Rabbit&#039;s mom in the &quot;Sonic the Hedgehog&quot; series?'
   );
@@ -29,26 +30,21 @@ function Card() {
   return (
     <View style={styles.container}>
       <View style={styles.badgeCounter}>
-        <Text style={styles.badgeText}>1 / 10</Text>
+        <Text style={styles.badgeText}>{'1 / 10'}</Text>
       </View>
       <LinearGradient colors={['#fff', '#ddd']} style={styles.cardGradient}>
-        <LinearGradient
-          colors={['#311B92', '#673AB7']}
-          style={styles.questionBox}>
-          <View style={{ padding: 30 }}>
-            <Text style={styles.textQuestion}>{convertChars(question)}</Text>
-          </View>
-        </LinearGradient>
+        <QuestionPanel>
+          <Text style={styles.textQuestion}>
+            {convertChars('results.question')}
+          </Text>
+        </QuestionPanel>
 
         <View style={styles.textSeparatorContainer}>
           <Text style={styles.textSeparator}>Your answer is...</Text>
         </View>
 
         <View style={styles.buttonsContainer}>
-          <AnswerButton textAnswer="Option 1" />
-          <AnswerButton textAnswer="Option 2" />
-          <AnswerButton textAnswer="Option 3" />
-          <AnswerButton textAnswer="Option 4" />
+          <AnswerButton textAnswer={'results.correct_answer'} />
         </View>
       </LinearGradient>
     </View>
@@ -71,15 +67,8 @@ const styles = StyleSheet.create({
   },
   cardGradient: {
     width: width * 0.8,
-    // height: height * 0.6,
     borderRadius: 15,
     alignItems: 'center',
-  },
-  questionBox: {
-    width: width * 0.76,
-    height: height * 0.2,
-    borderRadius: 15,
-    marginTop: 8,
   },
   textQuestion: {
     color: '#fff',

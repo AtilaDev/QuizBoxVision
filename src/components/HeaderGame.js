@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Dimensions, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   useFonts,
+  Ubuntu_400Regular,
   Ubuntu_400Regular_Italic,
   Ubuntu_700Bold,
   Ubuntu_500Medium,
@@ -13,8 +14,9 @@ const { width, height } = Dimensions.get('window');
 
 const isAndroid = Platform.OS === 'android';
 
-function HeaderGame() {
+function HeaderGame({ category, difficulty }) {
   let [fontsLoaded] = useFonts({
+    Ubuntu_400Regular,
     Ubuntu_400Regular_Italic,
     Ubuntu_700Bold,
     Ubuntu_500Medium,
@@ -26,14 +28,15 @@ function HeaderGame() {
     <View style={styles.container}>
       <LinearGradient colors={['#5DD1B9', '#BEFCE1']} style={styles.infoView}>
         <View style={styles.textView}>
-          <Text style={styles.text}>
-            Category:{' '}
-            <Text style={styles.dataTextColor}>{'Science & Nature'}</Text>
-          </Text>
-          <Text style={styles.text}>
-            Difficulty:{' '}
-            <Text style={styles.dataTextColor}>{capitalize('easy')}</Text>
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={styles.text}>Category:</Text>
+            <Text style={styles.dataTextColor}>{category}</Text>
+          </View>
+
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={styles.text}>Difficulty:</Text>
+            <Text style={styles.dataTextColor}>{capitalize(difficulty)}</Text>
+          </View>
         </View>
       </LinearGradient>
     </View>
@@ -68,10 +71,12 @@ const styles = StyleSheet.create({
     color: '#212121',
     fontSize: 14,
     lineHeight: 20,
-    fontFamily: 'Ubuntu_500Medium',
+    fontFamily: 'Ubuntu_400Regular',
   },
   dataTextColor: {
+    marginLeft: 5,
     color: '#311B92',
+    fontFamily: 'Ubuntu_500Medium',
   },
 });
 

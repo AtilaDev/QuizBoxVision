@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../components/Background';
@@ -7,22 +7,28 @@ import Card from '../components/Card';
 import HeaderGame from '../components/HeaderGame';
 
 function Game({ route }) {
-  const { data } = route.params;
+  const [pos, setPos] = useState(0);
+  const { questions } = route.params;
 
-  console.log(data);
+  const renderCards = () => {
+    if (pos < questions.length) {
+      return (
+        <Background style={styles.container}>
+          <HeaderGame
+            category={questions[pos].category}
+            difficulty={questions[pos].difficulty}
+          />
+          <View style={styles.cardContainer}>
+            <Animatable.View animation="bounceInRight">
+              <Card />
+            </Animatable.View>
+          </View>
+        </Background>
+      );
+    }
+  };
 
-  return (
-    <>
-      <Background style={styles.container}>
-        <HeaderGame />
-        <View style={styles.cardContainer}>
-          <Animatable.View animation="bounceInRight">
-            <Card />
-          </Animatable.View>
-        </View>
-      </Background>
-    </>
-  );
+  return renderCards();
 }
 
 const styles = StyleSheet.create({

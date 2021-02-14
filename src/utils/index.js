@@ -15,3 +15,10 @@ export const capitalize = (text) => {
   if (typeof text !== 'string') return '';
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
+
+export const messArray = (anArray) => {
+  var t = unArray.sort(function (a, b) {
+    return Math.random() - 0.5;
+  });
+  return [...t];
+};
