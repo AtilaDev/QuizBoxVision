@@ -10,11 +10,12 @@ function Game({ route, navigation }) {
   const [pos, setPos] = useState(0);
   const { questions } = route.params;
 
+  console.log(pos);
   const nextPos = () => {
     if (pos < 9) {
       setPos(pos + 1);
     } else {
-      console.log('Game over!');
+      console.log('fin juego');
     }
   };
 
