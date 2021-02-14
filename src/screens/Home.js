@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -7,7 +7,14 @@ import LogoBox from '../components/LogoBox';
 import StartButton from '../components/StartButton';
 import FavreLeandro from '../components/FavreLeandro';
 
+import { useApi } from '../api';
+
 function Home({ navigation }) {
+  const startGame = async () => {
+    const data = await useApi();
+    navigation.navigate('Game', { data });
+  };
+
   return (
     <Background style={styles.container}>
       <View style={styles.logoSection}>
@@ -17,7 +24,7 @@ function Home({ navigation }) {
       </View>
       <View style={styles.startButton}>
         <Animatable.View animation="zoomIn">
-          <StartButton play={() => navigation.navigate('Game')} />
+          <StartButton play={startGame} />
         </Animatable.View>
       </View>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -6,7 +6,11 @@ import Background from '../components/Background';
 import Card from '../components/Card';
 import HeaderGame from '../components/HeaderGame';
 
-function Game() {
+function Game({ route }) {
+  const { data } = route.params;
+
+  console.log(data);
+
   return (
     <>
       <Background style={styles.container}>

@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator mode="card" initialRouteName="Game">
+      <Stack.Navigator mode="card" initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={Home}
