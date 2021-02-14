@@ -10,7 +10,7 @@ import { useFonts, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
 
 const { width } = Dimensions.get('window');
 
-function AnswerButton(props) {
+function AnswerButton({ textAnswer, nextPos }) {
   let [fontsLoaded] = useFonts({
     Ubuntu_700Bold,
   });
@@ -18,9 +18,9 @@ function AnswerButton(props) {
   if (!fontsLoaded) return <View />;
 
   return (
-    <TouchableOpacity style={{ marginBottom: 10 }}>
+    <TouchableOpacity style={{ marginBottom: 10 }} onPress={nextPos}>
       <View style={styles.buttonContainer}>
-        <Text style={styles.textButton}>{props.textAnswer}</Text>
+        <Text style={styles.textButton}>{textAnswer}</Text>
       </View>
     </TouchableOpacity>
   );

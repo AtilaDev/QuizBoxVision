@@ -6,12 +6,16 @@ import Background from '../components/Background';
 import Card from '../components/Card';
 import HeaderGame from '../components/HeaderGame';
 
-function Game({ route }) {
+function Game({ route, navigation }) {
   const [pos, setPos] = useState(0);
   const { questions } = route.params;
 
   const nextPos = () => {
-    setPos(pos + 1);
+    if (pos < 9) {
+      setPos(pos + 1);
+    } else {
+      console.log('Game over!');
+    }
   };
 
   const renderCards = () => {
@@ -25,8 +29,8 @@ function Game({ route }) {
           <View style={styles.cardContainer}>
             <Animatable.View animation="bounceInRight">
               <Card
-                question={questions[0]}
-                actualPos={pos + 1}
+                question={questions[pos]}
+                actualPos={pos}
                 total={questions.length}
                 nextPos={nextPos}
               />

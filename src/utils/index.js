@@ -17,7 +17,7 @@ export const capitalize = (text) => {
 };
 
 export const messArray = (anArray) => {
-  var t = unArray.sort(function (a, b) {
+  var t = anArray.sort(function (a, b) {
     return Math.random() - 0.5;
   });
   return [...t];

@@ -15,7 +15,7 @@ function QuestionPanel({ children }) {
 const styles = StyleSheet.create({
   questionBox: {
     width: width * 0.76,
-    height: height * 0.2,
+    height: height * 0.18,
     borderRadius: 15,
     marginTop: 8,
   },

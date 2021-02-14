@@ -28,15 +28,11 @@ function HeaderGame({ category, difficulty }) {
     <View style={styles.container}>
       <LinearGradient colors={['#5DD1B9', '#BEFCE1']} style={styles.infoView}>
         <View style={styles.textView}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={styles.text}>Category:</Text>
-            <Text style={styles.dataTextColor}>{category}</Text>
-          </View>
+          <Text style={styles.text}>Category:</Text>
+          <Text style={styles.dataTextColor}>{category}</Text>
 
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={styles.text}>Difficulty:</Text>
-            <Text style={styles.dataTextColor}>{capitalize(difficulty)}</Text>
-          </View>
+          <Text style={styles.text}>Difficulty:</Text>
+          <Text style={styles.dataTextColor}>{capitalize(difficulty)}</Text>
         </View>
       </LinearGradient>
     </View>
@@ -61,11 +57,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 3,
     borderColor: '#FFCC80',
-    width: width * 0.7,
-    paddingVertical: height * 0.02,
+    width: width * 0.79,
+    paddingVertical: height * 0.01,
   },
   textView: {
-    paddingLeft: 20,
+    paddingLeft: 16,
   },
   text: {
     color: '#212121',

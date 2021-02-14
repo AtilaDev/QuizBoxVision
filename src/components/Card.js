@@ -7,7 +7,7 @@ import {
   Ubuntu_700Bold,
   Ubuntu_500Medium,
 } from '@expo-google-fonts/ubuntu';
-import { convertChars } from '../utils';
+import { convertChars, messArray } from '../utils';
 
 import AnswerButton from './AnswerButton';
 import QuestionPanel from './QuestionPanel';
@@ -15,6 +15,8 @@ import QuestionPanel from './QuestionPanel';
 const { width } = Dimensions.get('window');
 
 function Card({ question, actualPos, total, nextPos }) {
+  let pos = actualPos + 1;
+
   let [fontsLoaded] = useFonts({
     Ubuntu_400Regular_Italic,
     Ubuntu_700Bold,
@@ -23,10 +25,34 @@ function Card({ question, actualPos, total, nextPos }) {
 
   if (!fontsLoaded) return <View />;
 
+  const renderButtons = () => {
+    const { incorrect_answers, correct_answer, type } = question;
+    const answers = [...incorrect_answers, correct_answer];
+    const messAnswers = messArray(answers);
+
+    if (type === 'multiple') {
+      return messAnswers.map((item) => (
+        <AnswerButton
+          textAnswer={convertChars(item)}
+          key={item}
+          nextPos={nextPos}
+        />
+      ));
+    } else {
+      return messAnswers.map((item) => (
+        <AnswerButton
+          textAnswer={convertChars(item)}
+          key={item}
+          nextPos={nextPos}
+        />
+      ));
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.badgeCounter}>
-        <Text style={styles.badgeText}>{actualPos + ' / ' + total}</Text>
+        <Text style={styles.badgeText}>{pos + ' / ' + total}</Text>
       </View>
       <LinearGradient colors={['#fff', '#ddd']} style={styles.cardGradient}>
         <QuestionPanel>
@@ -39,9 +65,7 @@ function Card({ question, actualPos, total, nextPos }) {
           <Text style={styles.textSeparator}>Your answer is...</Text>
         </View>
 
-        <View style={styles.buttonsContainer}>
-          <AnswerButton textAnswer={'results.correct_answer'} />
-        </View>
+        <View style={styles.buttonsContainer}>{renderButtons()}</View>
       </LinearGradient>
     </View>
   );
