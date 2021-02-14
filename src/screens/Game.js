@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -10,10 +10,15 @@ function Game({ route, navigation }) {
   const [pos, setPos] = useState(0);
   const { questions } = route.params;
 
-  console.log(pos);
+  const animationRef = useRef();
+
+  const bounce = () => animationRef.current.bounceInRight(1200);
+
+  // console.log(pos);
   const nextPos = () => {
     if (pos < 9) {
       setPos(pos + 1);
+      bounce();
     } else {
       console.log('fin juego');
     }
@@ -28,7 +33,7 @@ function Game({ route, navigation }) {
             difficulty={questions[pos].difficulty}
           />
           <View style={styles.cardContainer}>
-            <Animatable.View animation="bounceInRight">
+            <Animatable.View ref={animationRef}>
               <Card
                 question={questions[pos]}
                 actualPos={pos}
