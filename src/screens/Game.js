@@ -10,6 +10,10 @@ function Game({ route }) {
   const [pos, setPos] = useState(0);
   const { questions } = route.params;
 
+  const nextPos = () => {
+    setPos(pos + 1);
+  };
+
   const renderCards = () => {
     if (pos < questions.length) {
       return (
@@ -20,7 +24,12 @@ function Game({ route }) {
           />
           <View style={styles.cardContainer}>
             <Animatable.View animation="bounceInRight">
-              <Card />
+              <Card
+                question={questions[0]}
+                actualPos={pos + 1}
+                total={questions.length}
+                nextPos={nextPos}
+              />
             </Animatable.View>
           </View>
         </Background>

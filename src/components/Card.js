@@ -14,11 +14,7 @@ import QuestionPanel from './QuestionPanel';
 
 const { width } = Dimensions.get('window');
 
-function Card({ results }) {
-  const [question, setQuestion] = React.useState(
-    'What is the name of Cream the Rabbit&#039;s mom in the &quot;Sonic the Hedgehog&quot; series?'
-  );
-
+function Card({ question, actualPos, total, nextPos }) {
   let [fontsLoaded] = useFonts({
     Ubuntu_400Regular_Italic,
     Ubuntu_700Bold,
@@ -30,12 +26,12 @@ function Card({ results }) {
   return (
     <View style={styles.container}>
       <View style={styles.badgeCounter}>
-        <Text style={styles.badgeText}>{'1 / 10'}</Text>
+        <Text style={styles.badgeText}>{actualPos + ' / ' + total}</Text>
       </View>
       <LinearGradient colors={['#fff', '#ddd']} style={styles.cardGradient}>
         <QuestionPanel>
           <Text style={styles.textQuestion}>
-            {convertChars('results.question')}
+            {convertChars(question.question)}
           </Text>
         </QuestionPanel>
 
