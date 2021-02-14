@@ -7,6 +7,7 @@ import {
   Ubuntu_700Bold,
   Ubuntu_500Medium,
 } from '@expo-google-fonts/ubuntu';
+import { capitalize } from '../utils';
 
 const { width, height } = Dimensions.get('window');
 
@@ -25,8 +26,14 @@ function HeaderGame() {
     <View style={styles.container}>
       <LinearGradient colors={['#5DD1B9', '#BEFCE1']} style={styles.infoView}>
         <View style={styles.textView}>
-          <Text style={styles.text}>Category: {'Science & Nature'}</Text>
-          <Text style={styles.text}>Difficulty: {'easy'}</Text>
+          <Text style={styles.text}>
+            Category:{' '}
+            <Text style={styles.dataTextColor}>{'Science & Nature'}</Text>
+          </Text>
+          <Text style={styles.text}>
+            Difficulty:{' '}
+            <Text style={styles.dataTextColor}>{capitalize('easy')}</Text>
+          </Text>
         </View>
       </LinearGradient>
     </View>
@@ -58,10 +65,13 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   text: {
-    color: '#311B92',
+    color: '#212121',
     fontSize: 14,
     lineHeight: 20,
     fontFamily: 'Ubuntu_500Medium',
+  },
+  dataTextColor: {
+    color: '#311B92',
   },
 });
 
