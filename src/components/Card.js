@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   useFonts,
+  Ubuntu_400Regular,
   Ubuntu_400Regular_Italic,
   Ubuntu_700Bold,
   Ubuntu_500Medium,
@@ -18,6 +19,7 @@ function Card({ question, actualPos, total, nextPos }) {
   let pos = actualPos + 1;
 
   let [fontsLoaded] = useFonts({
+    Ubuntu_400Regular,
     Ubuntu_400Regular_Italic,
     Ubuntu_700Bold,
     Ubuntu_500Medium,
@@ -50,11 +52,13 @@ function Card({ question, actualPos, total, nextPos }) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.badgeCounter}>
+    <View style={[styles.container, styles.sharedShadow]}>
+      <View style={[styles.badgeCounter, styles.sharedShadow]}>
         <Text style={styles.badgeText}>{pos + ' / ' + total}</Text>
       </View>
-      <LinearGradient colors={['#fff', '#ddd']} style={styles.cardGradient}>
+      <LinearGradient
+        colors={['#fff', '#ddd']}
+        style={[styles.cardGradient, styles.sharedShadow]}>
         <QuestionPanel>
           <Text style={styles.textQuestion}>
             {convertChars(question.question)}
@@ -74,16 +78,6 @@ function Card({ question, actualPos, total, nextPos }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.41,
-    shadowRadius: 9.11,
-
-    elevation: 14,
   },
   cardGradient: {
     width: width * 0.8,
@@ -92,8 +86,9 @@ const styles = StyleSheet.create({
   },
   textQuestion: {
     color: '#fff',
-    fontFamily: 'Ubuntu_400Regular_Italic',
-    fontSize: 20,
+    fontFamily: 'Ubuntu_400Regular',
+    fontSize: 18,
+    textAlign: 'center',
   },
   buttonsContainer: {
     marginTop: 20,
@@ -120,20 +115,21 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 25,
     borderRadius: 30,
-
-    shadowColor: '#ddd',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-
-    elevation: 3,
   },
   badgeText: {
     fontSize: 15,
     fontFamily: 'Ubuntu_500Medium',
+  },
+  sharedShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+
+    elevation: 14,
   },
 });
 

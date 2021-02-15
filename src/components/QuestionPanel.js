@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   viewContainer: {
-    padding: 30,
+    padding: 28,
   },
 });
 

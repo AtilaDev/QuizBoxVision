@@ -1,13 +1,19 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../components/Background';
 
-function Result() {
+function Result({ navigation }) {
   return (
     <>
-      <Background style={styles.container}></Background>
+      <Background style={styles.container}>
+        <Text style={{ fontSize: 30 }}>Game Over!</Text>
+        <Button
+          title="Back to Home"
+          onPress={() => navigation.navigate('Home')}
+        />
+      </Background>
     </>
   );
 }
@@ -16,6 +22,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

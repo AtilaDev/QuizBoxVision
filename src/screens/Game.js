@@ -10,9 +10,13 @@ function Game({ route, navigation }) {
   const [pos, setPos] = useState(0);
   const { questions } = route.params;
 
-  const animationRef = useRef();
+  const animationRightRef = useRef();
+  const animationLeftRef = useRef();
 
-  const bounce = () => animationRef.current.bounceInRight(1200);
+  const bounce = () => {
+    animationRightRef.current.bounceInRight(1200);
+    animationLeftRef.current.bounceInLeft(1200);
+  };
 
   // console.log(pos);
   const nextPos = () => {
@@ -21,6 +25,7 @@ function Game({ route, navigation }) {
       bounce();
     } else {
       console.log('fin juego');
+      navigation.navigate('Result');
     }
   };
 
@@ -28,12 +33,14 @@ function Game({ route, navigation }) {
     if (pos < questions.length) {
       return (
         <Background style={styles.container}>
-          <HeaderGame
-            category={questions[pos].category}
-            difficulty={questions[pos].difficulty}
-          />
+          <Animatable.View ref={animationLeftRef}>
+            <HeaderGame
+              category={questions[pos].category}
+              difficulty={questions[pos].difficulty}
+            />
+          </Animatable.View>
           <View style={styles.cardContainer}>
-            <Animatable.View ref={animationRef}>
+            <Animatable.View ref={animationRightRef}>
               <Card
                 question={questions[pos]}
                 actualPos={pos}
