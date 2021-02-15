@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import * as Animatable from 'react-native-animatable';
 
 import Background from '../components/Background';
+import { useFonts } from '@expo-google-fonts/play';
 
 function Result({ route, navigation }) {
   const { totalPoints } = route.params;

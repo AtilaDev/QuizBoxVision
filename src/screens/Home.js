@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { Audio } from 'expo-av';
 
 import Background from '../components/Background';
 import LogoBox from '../components/LogoBox';
@@ -9,8 +10,30 @@ import FavreLeandro from '../components/FavreLeandro';
 
 import { useApi } from '../api';
 
+const start = require('../../assets/effects/start.mp3');
+
 function Home({ navigation }) {
+  const [sound, setSound] = useState();
+
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(start);
+    setSound(sound);
+
+    try {
+      await sound.playAsync();
+    } catch (e) {}
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   const startGame = async () => {
+    playSound();
     const data = await useApi();
     navigation.navigate('Game', { questions: data.results });
   };

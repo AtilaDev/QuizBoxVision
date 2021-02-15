@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,13 +8,58 @@ import {
 } from 'react-native';
 import { useFonts, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
 import { useNavigation } from '@react-navigation/native';
+import { Audio } from 'expo-av';
 
 const { width } = Dimensions.get('window');
 
 let totalPoints = 0;
 
+const correct = require('../../assets/effects/correct.mp3');
+const fail = require('../../assets/effects/fail.mp3');
+const game_over = require('../../assets/effects/game_over.mp3');
+
 function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
   const navigation = useNavigation();
+  const [sound, setSound] = useState(undefined);
+
+  async function playSound(checkState) {
+    const { sound } = await Audio.Sound.createAsync(
+      checkState ? correct : fail
+    );
+    setSound(sound);
+
+    try {
+      await sound.playAsync();
+    } catch (e) {}
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
+  // End Game ------
+  async function playSoundEndGame() {
+    const { sound } = await Audio.Sound.createAsync(game_over);
+    setSound(sound);
+
+    try {
+      await sound.playAsync();
+    } catch (e) {}
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
+  // --------
 
   let [fontsLoaded] = useFonts({
     Ubuntu_700Bold,
@@ -28,12 +73,18 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
     switch (type) {
       case 'multiple':
         if (textAnswer == correctAnswer) {
+          playSound(true);
           totalPoints += 10;
+        } else {
+          playSound(false);
         }
         break;
       case 'boolean':
         if (textAnswer == correctAnswer) {
+          playSound(true);
           totalPoints += 5;
+        } else {
+          playSound(false);
         }
         break;
     }
@@ -41,7 +92,10 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
     if (actualPos === 9) {
       let finalPoints = totalPoints;
       totalPoints = 0;
-      navigation.navigate('Result', { totalPoints: finalPoints });
+      setTimeout(() => {
+        playSoundEndGame();
+        navigation.navigate('Result', { totalPoints: finalPoints });
+      }, 500);
     }
   };
 
