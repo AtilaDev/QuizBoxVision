@@ -7,18 +7,46 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useFonts, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
-function AnswerButton({ textAnswer, nextPos }) {
+let totalPoints = 0;
+
+function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
+  const navigation = useNavigation();
+
   let [fontsLoaded] = useFonts({
     Ubuntu_700Bold,
   });
 
   if (!fontsLoaded) return <View />;
 
+  const handleOnPress = () => {
+    nextPos();
+
+    switch (type) {
+      case 'multiple':
+        if (textAnswer == correctAnswer) {
+          totalPoints += 10;
+        }
+        break;
+      case 'boolean':
+        if (textAnswer == correctAnswer) {
+          totalPoints += 5;
+        }
+        break;
+    }
+
+    if (actualPos === 9) {
+      let finalPoints = totalPoints;
+      totalPoints = 0;
+      navigation.navigate('Result', { totalPoints: finalPoints });
+    }
+  };
+
   return (
-    <TouchableOpacity style={{ marginBottom: 10 }} onPress={nextPos}>
+    <TouchableOpacity style={{ marginBottom: 10 }} onPress={handleOnPress}>
       <View style={styles.buttonContainer}>
         <Text style={styles.textButton}>{textAnswer}</Text>
       </View>

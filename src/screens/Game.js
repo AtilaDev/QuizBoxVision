@@ -6,7 +6,7 @@ import Background from '../components/Background';
 import Card from '../components/Card';
 import HeaderGame from '../components/HeaderGame';
 
-function Game({ route, navigation }) {
+function Game({ route }) {
   const [pos, setPos] = useState(0);
   const { questions } = route.params;
 
@@ -18,14 +18,10 @@ function Game({ route, navigation }) {
     animationLeftRef.current.bounceInLeft(1200);
   };
 
-  // console.log(pos);
   const nextPos = () => {
     if (pos < 9) {
       setPos(pos + 1);
       bounce();
-    } else {
-      console.log('fin juego');
-      navigation.navigate('Result');
     }
   };
 

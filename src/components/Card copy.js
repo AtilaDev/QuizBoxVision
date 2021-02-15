@@ -32,16 +32,27 @@ function Card({ question, actualPos, total, nextPos }) {
     const answers = [...incorrect_answers, correct_answer];
     const messAnswers = messArray(answers);
 
-    return messAnswers.map((item) => (
-      <AnswerButton
-        key={item}
-        type={type}
-        textAnswer={convertChars(item)}
-        correctAnswer={convertChars(question.correct_answer)}
-        nextPos={nextPos}
-        actualPos={actualPos}
-      />
-    ));
+    if (type === 'multiple') {
+      return messAnswers.map((item) => (
+        <AnswerButton
+          textAnswer={convertChars(item)}
+          key={item}
+          nextPos={nextPos}
+          type={type}
+          correctAnswer={question.correct_answer}
+        />
+      ));
+    } else {
+      return messAnswers.map((item) => (
+        <AnswerButton
+          key={item}
+          textAnswer={convertChars(item)}
+          correctAnswer={convertChars(question.correct_answer)}
+          type={type}
+          nextPos={nextPos}
+        />
+      ));
+    }
   };
 
   return (
