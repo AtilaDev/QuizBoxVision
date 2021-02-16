@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useFonts, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { Audio } from 'expo-av';
 
@@ -20,12 +21,11 @@ const game_over = require('../../assets/effects/game_over.mp3');
 
 function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
   const navigation = useNavigation();
-  const [sound, setSound] = useState(undefined);
+  const [sound, setSound] = useState();
+  const [dataForChart, setDataForChart] = useState([]);
 
-  async function playSound(checkState) {
-    const { sound } = await Audio.Sound.createAsync(
-      checkState ? correct : fail
-    );
+  async function playSound(create_sound) {
+    const { sound } = await Audio.Sound.createAsync(create_sound);
     setSound(sound);
 
     try {
@@ -40,26 +40,6 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
         }
       : undefined;
   }, [sound]);
-
-  // End Game ------
-  async function playSoundEndGame() {
-    const { sound } = await Audio.Sound.createAsync(game_over);
-    setSound(sound);
-
-    try {
-      await sound.playAsync();
-    } catch (e) {}
-  }
-
-  useEffect(() => {
-    return sound
-      ? () => {
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
-
-  // --------
 
   let [fontsLoaded] = useFonts({
     Ubuntu_700Bold,
@@ -67,34 +47,71 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
 
   if (!fontsLoaded) return <View />;
 
+  console.log('correctAnswer', correctAnswer);
+
   const handleOnPress = () => {
     nextPos();
 
     switch (type) {
       case 'multiple':
         if (textAnswer == correctAnswer) {
-          playSound(true);
+          playSound(correct);
           totalPoints += 10;
         } else {
-          playSound(false);
+          playSound(fail);
         }
         break;
       case 'boolean':
         if (textAnswer == correctAnswer) {
-          playSound(true);
+          playSound(correct);
           totalPoints += 5;
         } else {
-          playSound(false);
+          playSound(fail);
         }
         break;
     }
 
+    const storeData = async (value) => {
+      try {
+        const myData = await AsyncStorage.getItem('@quiz_box_game');
+        if (myData) {
+          const myDataParsed = JSON.parse(myData);
+
+          myDataParsed.push({
+            x: myDataParsed.length + 1,
+            y: value,
+          });
+
+          await AsyncStorage.setItem(
+            '@quiz_box_game',
+            JSON.stringify(myDataParsed)
+          );
+        } else {
+          try {
+            const data = [
+              {
+                x: 1,
+                y: value,
+              },
+            ];
+            const jsonValue = JSON.stringify(data);
+
+            await AsyncStorage.setItem('@quiz_box_game', jsonValue);
+          } catch (e) {}
+        }
+      } catch (e) {}
+    };
+
     if (actualPos === 9) {
       let finalPoints = totalPoints;
       totalPoints = 0;
-      setTimeout(() => {
-        playSoundEndGame();
-        navigation.navigate('Result', { totalPoints: finalPoints });
+
+      setTimeout(async () => {
+        await storeData(finalPoints);
+        playSound(game_over);
+        navigation.navigate('Result', {
+          totalPoints: finalPoints,
+        });
       }, 500);
     }
   };

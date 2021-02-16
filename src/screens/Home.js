@@ -3,6 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { Audio } from 'expo-av';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Background from '../components/Background';
 import LogoBox from '../components/LogoBox';
 import StartButton from '../components/StartButton';
@@ -36,6 +38,7 @@ function Home({ navigation }) {
     playSound();
     const data = await useApi();
     navigation.navigate('Game', { questions: data.results });
+    // await AsyncStorage.removeItem('@quiz_box_game');
   };
 
   return (
