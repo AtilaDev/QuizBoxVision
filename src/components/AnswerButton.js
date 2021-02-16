@@ -46,8 +46,6 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
 
   if (!fontsLoaded) return <View />;
 
-  // console.log('correctAnswer', correctAnswer);
-
   const handleOnPress = () => {
     nextPos();
 

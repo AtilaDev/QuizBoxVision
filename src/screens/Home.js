@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AwesomeAlert from 'react-native-awesome-alerts';
@@ -20,7 +20,6 @@ function Home({ navigation }) {
   const [data, setData] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [noTimesPlayed, setNoTimesPlayed] = useState(false);
-  // const [timesPlayed, setTimesPlayed] = useState(null);
 
   async function readLengthFromDataChart() {
     const myData = await AsyncStorage.getItem('@quiz_box_game');
@@ -51,7 +50,6 @@ function Home({ navigation }) {
     const data = await useApi();
     setData(data);
     const timesPlayed = await readLengthFromDataChart();
-    // setTimesPlayed(timesPlayed);
 
     if (timesPlayed != 10) {
       await navigation.navigate('Game', { questions: data.results });
