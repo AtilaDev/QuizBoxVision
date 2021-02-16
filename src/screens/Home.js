@@ -19,6 +19,8 @@ function Home({ navigation }) {
   const [sound, setSound] = useState();
   const [data, setData] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
+  const [noTimesPlayed, setNoTimesPlayed] = useState(false);
+  // const [timesPlayed, setTimesPlayed] = useState(null);
 
   async function readLengthFromDataChart() {
     const myData = await AsyncStorage.getItem('@quiz_box_game');
@@ -49,8 +51,9 @@ function Home({ navigation }) {
     const data = await useApi();
     setData(data);
     const timesPlayed = await readLengthFromDataChart();
+    // setTimesPlayed(timesPlayed);
 
-    if (timesPlayed != 3) {
+    if (timesPlayed != 10) {
       await navigation.navigate('Game', { questions: data.results });
     } else {
       setShowAlert(true);
@@ -74,7 +77,15 @@ function Home({ navigation }) {
         <Animatable.View animation="zoomIn">
           <CommonButton
             text="Show Progress"
-            onPress={() => navigation.navigate('Result', { onlyShow: true })}
+            color="#673AB7"
+            onPress={async () => {
+              const timesPlayed = await readLengthFromDataChart();
+              if (timesPlayed) {
+                navigation.navigate('Result', { onlyShow: true });
+              } else {
+                setNoTimesPlayed(true);
+              }
+            }}
           />
         </Animatable.View>
       </View>
@@ -99,6 +110,17 @@ function Home({ navigation }) {
           AsyncStorage.removeItem('@quiz_box_game');
           navigation.navigate('Game', { questions: data.results });
         }}
+      />
+
+      <AwesomeAlert
+        show={noTimesPlayed}
+        message="You don't have any game played yet! You need at least one game played to draw a line chart."
+        closeOnTouchOutside={false}
+        closeOnHardwareBackPress={true}
+        showCancelButton={true}
+        cancelText="OK"
+        cancelButtonColor="#5DD1B9"
+        onCancelPressed={() => setNoTimesPlayed(false)}
       />
     </Background>
   );
