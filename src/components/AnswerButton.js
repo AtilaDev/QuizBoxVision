@@ -22,7 +22,6 @@ const game_over = require('../../assets/effects/game_over.mp3');
 function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
   const navigation = useNavigation();
   const [sound, setSound] = useState();
-  const [dataForChart, setDataForChart] = useState([]);
 
   async function playSound(create_sound) {
     const { sound } = await Audio.Sound.createAsync(create_sound);

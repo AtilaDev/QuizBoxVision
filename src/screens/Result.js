@@ -15,11 +15,21 @@ import Background from '../components/Background';
 function Result({ route, navigation }) {
   const { totalPoints } = route.params;
   const [dataChart, setDataChart] = useState([]);
+  const [average, setAverage] = useState(0);
 
   const readFromDataChart = async () => {
     const myData = await AsyncStorage.getItem('@quiz_box_game');
     if (myData) {
-      setDataChart(JSON.parse(myData));
+      const myDataParsed = JSON.parse(myData);
+
+      let sumTotal = myDataParsed
+        .map((item) => {
+          return item.y;
+        })
+        .reduce((acc, valor) => acc + valor);
+
+      setAverage(sumTotal / myDataParsed.length);
+      setDataChart(myDataParsed);
     }
   };
 
@@ -32,6 +42,10 @@ function Result({ route, navigation }) {
       <Background style={styles.container}>
         <Text style={{ fontSize: 30 }}>Game Over!</Text>
         <Text style={{ fontSize: 40 }}>Total Points: {totalPoints}</Text>
+        <Text style={{ fontSize: 17 }}>
+          You are played: {dataChart.length} times!
+        </Text>
+        <Text style={{ fontSize: 20 }}>Your general average is: {average}</Text>
 
         <Chart
           style={{ height: 200, width: 400, marginTop: 40 }}
