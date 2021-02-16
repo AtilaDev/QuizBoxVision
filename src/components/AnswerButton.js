@@ -46,7 +46,7 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
 
   if (!fontsLoaded) return <View />;
 
-  console.log('correctAnswer', correctAnswer);
+  // console.log('correctAnswer', correctAnswer);
 
   const handleOnPress = () => {
     nextPos();
@@ -106,12 +106,13 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
       totalPoints = 0;
 
       setTimeout(async () => {
-        await storeData(finalPoints);
         playSound(game_over);
+        await storeData(finalPoints);
         navigation.navigate('Result', {
           totalPoints: finalPoints,
+          onlyShow: false,
         });
-      }, 500);
+      }, 600);
     }
   };
 

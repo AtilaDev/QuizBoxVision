@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { Audio } from 'expo-av';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AwesomeAlert from 'react-native-awesome-alerts';
+import { Audio } from 'expo-av';
 
 import Background from '../components/Background';
 import LogoBox from '../components/LogoBox';
@@ -11,11 +11,21 @@ import StartButton from '../components/StartButton';
 import FavreLeandro from '../components/FavreLeandro';
 
 import { useApi } from '../api';
+import CommonButton from '../components/CommonButton';
 
 const start = require('../../assets/effects/start.mp3');
 
 function Home({ navigation }) {
   const [sound, setSound] = useState();
+  const [data, setData] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
+
+  async function readLengthFromDataChart() {
+    const myData = await AsyncStorage.getItem('@quiz_box_game');
+    if (myData) {
+      return JSON.parse(myData).length;
+    }
+  }
 
   async function playSound() {
     const { sound } = await Audio.Sound.createAsync(start);
@@ -37,8 +47,14 @@ function Home({ navigation }) {
   const startGame = async () => {
     playSound();
     const data = await useApi();
-    navigation.navigate('Game', { questions: data.results });
-    // await AsyncStorage.removeItem('@quiz_box_game');
+    setData(data);
+    const timesPlayed = await readLengthFromDataChart();
+
+    if (timesPlayed != 3) {
+      await navigation.navigate('Game', { questions: data.results });
+    } else {
+      setShowAlert(true);
+    }
   };
 
   return (
@@ -54,11 +70,36 @@ function Home({ navigation }) {
         </Animatable.View>
       </View>
 
+      <View style={styles.progressButton}>
+        <Animatable.View animation="zoomIn">
+          <CommonButton
+            text="Show Progress"
+            onPress={() => navigation.navigate('Result', { onlyShow: true })}
+          />
+        </Animatable.View>
+      </View>
+
       <View style={styles.devBy}>
         <Animatable.View animation="fadeInUp">
           <FavreLeandro />
         </Animatable.View>
       </View>
+      <AwesomeAlert
+        show={showAlert}
+        message="You have played for 10 times. For play again you need reset statistics. If you continue these values will be removed."
+        closeOnTouchOutside={false}
+        closeOnHardwareBackPress={true}
+        showCancelButton={true}
+        showConfirmButton={true}
+        confirmText="Continue"
+        confirmButtonColor="#5DD1B9"
+        onCancelPressed={() => setShowAlert(false)}
+        onConfirmPressed={() => {
+          setShowAlert(false);
+          AsyncStorage.removeItem('@quiz_box_game');
+          navigation.navigate('Game', { questions: data.results });
+        }}
+      />
     </Background>
   );
 }
@@ -73,7 +114,10 @@ const styles = StyleSheet.create({
     paddingTop: 120,
   },
   startButton: {
-    marginTop: -100,
+    marginTop: -10,
+  },
+  progressButton: {
+    marginTop: -40,
   },
   devBy: {
     marginBottom: 30,
