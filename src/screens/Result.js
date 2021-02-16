@@ -116,6 +116,7 @@ function Result({ route, navigation }) {
           showConfirmButton={true}
           confirmText="Yes, please!"
           cancelText="No, cancel!"
+          cancelButtonColor="#000"
           confirmButtonColor="red"
           onCancelPressed={() => setShowAlert(false)}
           onConfirmPressed={() => {

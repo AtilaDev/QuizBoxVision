@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   textBBV: {
-    color: '#B9F9DF',
+    color: '#666',
     fontFamily: 'Allan_700Bold',
     fontSize: 20,
   },
