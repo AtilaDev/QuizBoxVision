@@ -59,4 +59,4 @@ expo start
 
 ## License
 
-The content of this project itself is licensed under the [Attribution-NonCommercial-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode)
+The logic used and ideas implemented to develop this application are licensed under the [Attribution-NonCommercial-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode)
