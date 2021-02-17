@@ -32,20 +32,6 @@ expo start
 - Data persist on mobile
 - Line Chart slide
 
-## Libraries used
-
-- Expo SDK 40
-- @expo-google-fonts
-- @react-native-async-storage/async-storage
-- React Navigation 5
-- expo-av
-- expo-linear-gradient
-- expo-status-bar
-- react-native-animatable
-- react-native-awesome-alerts
-- react-native-responsive-image
-- react-native-responsive-linechart
-
 ## Tools used
 
 - Open Trivia: https://opentdb.com/
