@@ -45,7 +45,7 @@ expo start
 
 ## Author
 
-### Leandro Favre
+#### Leandro Favre
 
 - Github: ([@AtilaDev](https://github.com/AtilaDev))
 
