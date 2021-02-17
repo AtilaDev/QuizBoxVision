@@ -2,15 +2,17 @@
 
 QuizBox Vision it's a question and answer game developed by Leandro Favre.
 
+## Usage:
+
 ### Install:
 
-```
+```sh
 npm install or yarn install
 ```
 
 ### Run:
 
-```
+```sh
 expo start
 ```
 
@@ -34,7 +36,20 @@ expo start
 
 ## Tools used
 
-- Open Trivia: https://opentdb.com/
+- Open Trivia DATABASE: https://opentdb.com/
 - React Native Shadow Generator: https://ethercreative.github.io/react-native-shadow-generator/
 - Sounds: http://sonidosmp3gratis.com/index.php
 - Directory: https://directory.now.sh/
+
+## Author
+
+### Leandro Favre
+
+- Github: ([@AtilaDev](https://github.com/AtilaDev))
+
+- Twitter: ([@FavreLeandro](https://twitter.com/FavreLeandro))
+
+## Disclaimer
+
+- BlackBox Vision and BlackBox Vision Logo are trademarks from BlackBox Vision.
+- All libraries used in this application are from their respective authors.
