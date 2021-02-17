@@ -16,9 +16,7 @@ expo start
 
 ## Screenshots
 
-<img arc="https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo1.png" width="100">
-
-![Photo1](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo1.png)
+![Photo1](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo1.png){ width=100px }
 
 ![Photo2](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo2.png)
 
