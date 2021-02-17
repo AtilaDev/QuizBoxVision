@@ -56,3 +56,7 @@ expo start
 
 - BlackBox Vision and BlackBox Vision logo are trademarks of BlackBox Vision.
 - All libraries used in this application are property of their respective authors.
+
+## License
+
+The content of this project itself is licensed under the [Attribution-NonCommercial-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode)
