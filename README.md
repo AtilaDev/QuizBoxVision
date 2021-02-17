@@ -29,8 +29,8 @@ expo start
 
 - Animations
 - Sound effects
-- Total points for game played
-- Total average for games played
+- Total points per game played
+- Average total games played
 - Total games played
 - Data persist on mobile
 - Reset data saved on mobile
@@ -53,5 +53,5 @@ expo start
 
 ## Disclaimer
 
-- BlackBox Vision and BlackBox Vision Logo are trademarks from BlackBox Vision.
-- All libraries used in this application are from their respective authors.
+- BlackBox Vision and BlackBox Vision logo are trademarks of BlackBox Vision.
+- All libraries used in this application are property of their respective authors.
