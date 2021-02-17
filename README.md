@@ -14,6 +14,17 @@ npm install or yarn install
 expo start
 ```
 
+## Screenshots
+
+## Features
+
+- Animations
+- Sound effects
+- Total points for game played
+- Total average for games played
+- Data persist on mobile
+- Line Chart slide
+
 ## Libraries used
 
 - Expo SDK 40
@@ -28,7 +39,7 @@ expo start
 - react-native-responsive-image
 - react-native-responsive-linechart
 
-## Tools used for development
+## Tools used
 
 - Open Trivia: https://opentdb.com/
 - React Native Shadow Generator: https://ethercreative.github.io/react-native-shadow-generator/
