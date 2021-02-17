@@ -5,7 +5,6 @@ import {
   Ubuntu_400Regular,
   Ubuntu_400Regular_Italic,
   Ubuntu_700Bold,
-  Ubuntu_500Medium,
 } from '@expo-google-fonts/ubuntu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AwesomeAlert from 'react-native-awesome-alerts';
@@ -24,7 +23,6 @@ function Result({ route, navigation }) {
     Ubuntu_400Regular,
     Ubuntu_400Regular_Italic,
     Ubuntu_700Bold,
-    Ubuntu_500Medium,
   });
 
   const readFromDataChart = async () => {

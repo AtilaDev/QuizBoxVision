@@ -101,7 +101,7 @@ function Home({ navigation }) {
         showCancelButton={true}
         showConfirmButton={true}
         confirmText="Continue"
-        confirmButtonColor="#5DD1B9"
+        confirmButtonColor="red"
         cancelButtonColor="#000"
         onCancelPressed={() => setShowAlert(false)}
         onConfirmPressed={() => {
