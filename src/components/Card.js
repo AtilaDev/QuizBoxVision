@@ -40,6 +40,7 @@ function Card({ question, actualPos, total, nextPos }) {
         correctAnswer={convertChars(question.correct_answer)}
         nextPos={nextPos}
         actualPos={actualPos}
+        total={total}
       />
     ));
   };

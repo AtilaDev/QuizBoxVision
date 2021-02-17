@@ -10,7 +10,7 @@ import {
 function LineChart({ dataChart }) {
   return (
     <Chart
-      style={{ height: 250, width: 400, marginTop: 40 }}
+      style={{ height: 250, width: 400, marginTop: 10 }}
       data={dataChart}
       padding={{ left: 60, bottom: 20, right: 60, top: 20 }}
       xDomain={{ min: 1, max: 10 }}

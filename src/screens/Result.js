@@ -51,39 +51,17 @@ function Result({ route, navigation }) {
     <>
       <Background style={styles.container}>
         {onlyShow && (
-          <Text
-            style={{
-              fontSize: 30,
-              fontFamily: 'Ubuntu_700Bold',
-              lineHeight: 40,
-            }}>
-            Yours results by now!
-          </Text>
+          <Text style={styles.yourResultText}>Yours results by now!</Text>
         )}
+        {!onlyShow && <Text style={styles.gameOverText}>GAME OVER!</Text>}
         {!onlyShow && (
-          <Text
-            style={{
-              fontSize: 30,
-              fontFamily: 'Ubuntu_400Regular_Italic',
-              lineHeight: 40,
-            }}>
-            GAME OVER!
-          </Text>
-        )}
-        {!onlyShow && (
-          <Text
-            style={{
-              fontSize: 40,
-              fontFamily: 'Ubuntu_700Bold',
-            }}>
-            Total Points: {totalPoints}
-          </Text>
+          <Text style={styles.totalPoints}>Total Points: {totalPoints}</Text>
         )}
 
-        <Text style={{ fontSize: 20, fontFamily: 'Ubuntu_400Regular' }}>
+        <Text style={styles.playedTimesText}>
           You have played {dataChart.length} / 10 times!
         </Text>
-        <Text style={{ fontSize: 20, fontFamily: 'Ubuntu_400Regular' }}>
+        <Text style={styles.averageText}>
           Your general average is: {average.toFixed(2)}
         </Text>
 
@@ -133,6 +111,30 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 30,
+  },
+  yourResultText: {
+    fontSize: 30,
+    fontFamily: 'Ubuntu_700Bold',
+    lineHeight: 40,
+  },
+  gameOverText: {
+    fontSize: 30,
+    fontFamily: 'Ubuntu_400Regular_Italic',
+    lineHeight: 40,
+  },
+  totalPoints: {
+    fontSize: 40,
+    fontFamily: 'Ubuntu_700Bold',
+  },
+  playedTimesText: {
+    fontSize: 20,
+    fontFamily: 'Ubuntu_400Regular',
+    marginTop: 10,
+  },
+  averageText: {
+    fontSize: 18,
+    fontFamily: 'Ubuntu_400Regular',
+    marginTop: 5,
   },
 });
 

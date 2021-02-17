@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     height: height * 0.18,
     borderRadius: 15,
     marginTop: 8,
+    justifyContent: 'center',
   },
   viewContainer: {
     padding: 28,

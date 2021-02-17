@@ -19,10 +19,16 @@ const correct = require('../../assets/effects/correct.mp3');
 const fail = require('../../assets/effects/fail.mp3');
 const game_over = require('../../assets/effects/game_over.mp3');
 
-function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
+function AnswerButton({
+  textAnswer,
+  nextPos,
+  type,
+  correctAnswer,
+  actualPos,
+  total,
+}) {
   const navigation = useNavigation();
   const [sound, setSound] = useState();
-
   async function playSound(create_sound) {
     const { sound } = await Audio.Sound.createAsync(create_sound);
     setSound(sound);
@@ -49,23 +55,19 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
   const handleOnPress = () => {
     nextPos();
 
-    switch (type) {
-      case 'multiple':
-        if (textAnswer == correctAnswer) {
-          playSound(correct);
+    if (textAnswer == correctAnswer) {
+      playSound(correct);
+      switch (type) {
+        case 'multiple':
           totalPoints += 10;
-        } else {
-          playSound(fail);
-        }
-        break;
-      case 'boolean':
-        if (textAnswer == correctAnswer) {
-          playSound(correct);
+          break;
+
+        case 'boolean':
           totalPoints += 5;
-        } else {
-          playSound(fail);
-        }
-        break;
+          break;
+      }
+    } else {
+      playSound(fail);
     }
 
     const storeData = async (value) => {
@@ -99,7 +101,7 @@ function AnswerButton({ textAnswer, nextPos, type, correctAnswer, actualPos }) {
       } catch (e) {}
     };
 
-    if (actualPos === 9) {
+    if (actualPos === total - 1) {
       let finalPoints = totalPoints;
       totalPoints = 0;
 
@@ -136,6 +138,8 @@ const styles = StyleSheet.create({
   textButton: {
     color: '#673AB7',
     fontFamily: 'Ubuntu_700Bold',
+    paddingHorizontal: 10,
+    paddingVertical: 2,
   },
 });
 
