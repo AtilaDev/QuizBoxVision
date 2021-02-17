@@ -16,20 +16,15 @@ expo start
 
 ## Screenshots
 
-![Photo1]
-(https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo1.png)
+![Photo1](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo1.png)
 
-![Photo2]
-(https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo2.png)
+![Photo2](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo2.png)
 
-![Photo3]
-(https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo3.png)
+![Photo3](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo3.png)
 
-![Photo4]
-(https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo4.png)
+![Photo4](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo4.png)
 
-![Photo5]
-(https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo5.png)
+![Photo5](https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/photo5.png)
 
 ## Features
 
