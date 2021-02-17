@@ -35,6 +35,7 @@ expo start
 - Data persist on mobile
 - Reset data saved on mobile
 - Line Chart slide
+- Navigation between screens
 
 ## Tools used
 
