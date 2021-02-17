@@ -31,7 +31,9 @@ expo start
 - Sound effects
 - Total points for game played
 - Total average for games played
+- Total games played
 - Data persist on mobile
+- Reset data saved on mobile
 - Line Chart slide
 
 ## Tools used
