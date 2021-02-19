@@ -39,10 +39,12 @@ expo start
 
 ## Tools used
 
+- Expo SDK 40: https://expo.dev/
 - Open Trivia DATABASE: https://opentdb.com/
 - React Native Shadow Generator: https://ethercreative.github.io/react-native-shadow-generator/
-- Sounds: http://sonidosmp3gratis.com/index.php
 - Directory: https://directory.now.sh/
+- Sounds: http://sonidosmp3gratis.com/index.php
+
 
 ## Author
 
@@ -51,6 +53,13 @@ expo start
 - Github: ([@AtilaDev](https://github.com/AtilaDev))
 
 - Twitter: ([@FavreLeandro](https://twitter.com/FavreLeandro))
+
+## Do you want to try it?
+
+Scan with your Expo Go client this QR Code!
+
+<img src="https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/QuizBoxGame_by_FavreLeandro.png" width="300">
+
 
 ## Disclaimer
 
