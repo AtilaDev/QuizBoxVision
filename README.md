@@ -42,7 +42,8 @@ expo start
 - Expo SDK 40: https://expo.dev/
 - Open Trivia DATABASE: https://opentdb.com/
 - React Native Shadow Generator: https://ethercreative.github.io/react-native-shadow-generator/
-- Directory: https://directory.now.sh/
+- Directory (for expo-google-fonts): https://directory.now.sh/
+- @expo/vector-icons directory: https://icons.expo.fyi/
 - Sounds: http://sonidosmp3gratis.com/index.php
 
 
