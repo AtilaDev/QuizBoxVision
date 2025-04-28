@@ -55,12 +55,6 @@ expo start
 
 - Twitter: ([@FavreLeandro](https://twitter.com/FavreLeandro))
 
-## Do you want to try it?
-
-Scan with your Expo Go client this QR Code!
-
-<img src="https://github.com/AtilaDev/QuizBoxVision/blob/main/assets/screenshots/QuizBoxGame_by_FavreLeandro.png" width="300">
-
 
 ## Disclaimer
 
