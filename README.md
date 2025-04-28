@@ -53,7 +53,7 @@ expo start
 
 - Github: ([@AtilaDev](https://github.com/AtilaDev))
 
-- Twitter: ([@FavreLeandro](https://twitter.com/FavreLeandro))
+- X: ([@FavreLeandro](https://twitter.com/FavreLeandro))
 
 
 ## Disclaimer
